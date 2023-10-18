@@ -5,7 +5,10 @@ statistics = {
     "Уникальные посещения": 0
 }
 
-statistics["Общее количество"] = 6
-statistics["Уникальные посещения"] = 4
+quantity = len(users)
+unique = len(set(users))
+
+statistics["Общее количество"] = quantity
+statistics["Уникальные посещения"] = unique
 
 print(statistics)
