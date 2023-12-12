@@ -1,39 +1,35 @@
-class star_on_the_tree:
+class Star:
     """
-    класс описывает модель звезды на елке
+    Класс описывает модель звезды на елке
+    :param tree_size: размер ёлки
     """
-    def __init__(self, material: str, color: str, Christmas_tree_size: str):
+    def __init__(self, material: str, color: str, tree_size: str):
         self.material = "plastic"
         self.color = "gold"
-        self.Christmas_tree_size = "average"
+        self.tree_size = "average"
 
-    def size(self, Christmas_tree_size: str):
+    def size(self, tree_size: str):
         """
-        метод проверяет, елка средняя
-        >>> star_on_the_tree.size()
+        метод проверяет, что елка средняя
+        >>> Star.size()
         """
-        if not isinstance(Christmas_tree_size, str):
-            raise TypeError("")
+        if not isinstance(tree_size, str):
+            raise TypeError("Размер елки должен быть типа str")
 
-    def put(self, number_of_stars_at_the_moment: int):
+    def star_on_the_tree(self) -> bool:
         """
-        метод долелжен одеть звезду на елку, но чтобы на елке было не больше одной звезды
+        метод проверяет, есть ли на елки звезда
 
-        :param number_of_stars_at_the_moment: если 0, то на елке нет звезды, если стоит n, то на елке n звезд
-
-        >>> star_on_the_tree.put()
         """
-        number_of_stars_at_the_moment = 0
+
+    def put(self):
+        """
+        метод должен одеть звезду на елку
+        """
         ...
-        if not isinstance(number_of_stars_at_the_moment, int):
-            raise TypeError("")
-        if number_of_stars_at_the_moment < 0:
-            raise ValueError("")
-        if number_of_stars_at_the_moment + 1 >= 2:
-            raise ValueError("")
 
 
-class gift:
+class Gift:
     """
     класс описывает модель новогоднего подарка
     """
@@ -48,39 +44,45 @@ class gift:
         :param box_height: высота коробки
         :param box_width: ширина коробки
         :param box_thickness: толщина коробки
-        >>> gift.box()
+        >>> Gift.box()
         """
         box_height = 30
         box_width = 35
         box_thickness = 20
         ...
         if not isinstance(box_height, int):
-            raise TypeError("")
+            raise TypeError("Высота коробки должна быть типа int")
         if not isinstance(box_width, int):
-            raise TypeError("")
+            raise TypeError("Ширина коробки должна быть типа int")
         if not isinstance(box_thickness, int):
-            raise TypeError("")
+            raise TypeError("Толщина коробки должна быть типа int")
         if box_height - self.height < 0:
-            raise ValueError
-        if box_width - width < 0:
-            raise ValueError
-        if box_width - width < 0:
-            raise ValueError
+            raise ValueError ("Не хватает высоты коробки")
+        if box_width - self.width < 0:
+            raise ValueError ("Не хватает ширины коробки")
+        if box_thickness - self.thickness < 0:
+            raise ValueError ("Не хватает толщины коробки")
 
     def pack_in_box(self):
         """
-        метод должен упаковать подарок в коробку
+        метод должен положить подарок в коробку
         """
         ...
 
-class gingerbread:
+class Gingerbread:
     """
     класс описывает модель имбирного пряника
-    >>> gingerbread.necessary()
+    >>> Gingerbread.necessary()
     """
     def __init__(self, quantity: int, size: str):
         self.quantity = 12
         self.size = "small"
+
+    def cooking(self):
+        """
+        метод должен готовить пряники
+        """
+        ...
 
     def necessary(self, required_quantity: int):
         """
@@ -90,16 +92,9 @@ class gingerbread:
         required_quantity = 12
         ...
         if not isinstance(required_quantity, int):
-            raise TypeError("")
-        if required_quantity > quantity:
-            raise ValueError("")
-
-    def finish_cooking(self):
-        """
-        если изготовлено меньше, то догодовить
-        """
-        ...
-
+            raise TypeError("Нужное количество пряников должно быть типа int")
+        if required_quantity > self.quantity:
+            raise ValueError("Пряников не хватает, нужно сделать еще")
 
 if __name__ == "__main__":
     import doctest
