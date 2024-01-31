@@ -36,7 +36,7 @@ class PaperBook(Book):
         self.pages = pages
 
     def __str__(self):
-        return f"Бумажная книга {self._name}. Автор {self._author}"
+        return f"Книга {self._name}. Автор {self._author}"
 
     def __repr__(self):
         return f"{self.__class__.__name__}(name={self._name!r}, author={self._author!r}, pages={self.pages})"
@@ -60,7 +60,7 @@ class AudioBook(Book):
         self.duration = duration
 
     def __str__(self):
-        return f"Аудио книга {self._name}. Автор {self._author}"
+        return f"Книга {self._name}. Автор {self._author}"
 
     def __repr__(self):
         return f"{self.__class__.__name__}(name={self._name!r}, author={self._author!r}, duration={self.duration})"
