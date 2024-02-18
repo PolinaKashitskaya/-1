@@ -2,6 +2,9 @@ class Star:
     """
     Класс описывает модель звезды на елке
     :param tree_size: размер ёлки
+    :param color: цвет звезды
+    :param material: материал звезды
+    >>> star_model = Star("plastic", "gold", "average")
     """
     def __init__(self, material: str, color: str, tree_size: str):
         self.material = "plastic"
@@ -10,8 +13,9 @@ class Star:
 
     def size(self, tree_size: str):
         """
-        метод проверяет, что елка средняя
-        >>> Star.size()
+        метод проверяет, что размер елки типа str
+        >>> star_model = Star("plastic", "gold", "average")
+        >>> star_model.size("average")
         """
         if not isinstance(tree_size, str):
             raise TypeError("Размер елки должен быть типа str")
@@ -32,6 +36,10 @@ class Star:
 class Gift:
     """
     класс описывает модель новогоднего подарка
+    :param height: высота подарка
+    :param width: ширина подарка
+    :param thickness: толщина подарка
+    >>>gift_sizes = Gift(20, 30, 15)
     """
     def __init__(self, height: int, width: int, thickness: int):
         self.height = 20
@@ -44,7 +52,8 @@ class Gift:
         :param box_height: высота коробки
         :param box_width: ширина коробки
         :param box_thickness: толщина коробки
-        >>> Gift.box()
+        >>>gift_sizes = Gift(20, 30, 15)
+        >>>gift_sizes.box(30, 35, 20)
         """
         box_height = 30
         box_width = 35
@@ -72,7 +81,9 @@ class Gift:
 class Gingerbread:
     """
     класс описывает модель имбирного пряника
-    >>> Gingerbread.necessary()
+    :param quantity: количество пряников
+    :param size: размер пряников
+    >>>number_of_gingerbreads = Gingerbread(12)
     """
     def __init__(self, quantity: int, size: str):
         self.quantity = 12
@@ -88,6 +99,8 @@ class Gingerbread:
         """
         проверить, что изготовлено нужное количество
         :param required_quantity: нужное количество пряников (12)
+        >>>number_of_gingerbreads = Gingerbread(12)
+        >>>number_of_gingerbreads.necessary(12)
         """
         required_quantity = 12
         ...
