@@ -21,6 +21,9 @@ class ShibaInu:
 
     @height.setter
     def height(self, height: int) -> None:
+        """
+        Метод проверяет правильность значений
+        """
         if not isinstance(height, int):
             raise TypeError("Рост должен быть типа int")
         if height <= 0:
@@ -29,11 +32,30 @@ class ShibaInu:
 
     @weight.setter
     def weight(self, weight: int) -> None:
+        """
+        Метод проверяет правильность значений
+        """
         if not isinstance(weight, int):
             raise TypeError("Вес должен быть типа int")
         if weight <= 0:
             raise ValueError("Вес должен быть положительным числом")
         self._weight = weight
+
+    def standard(self):
+        """
+        Метод проверяет подходит ли собака под стандарт породы. Метод примерный, без разделения на пол собаки
+        """
+        if not (35 <= self.height <= 42):
+            return False
+        if not (8 <= self.weight <= 15):
+            return False
+        return True
+
+    def StandardColor(self):
+        """
+        Метод проверяет, что цвет собаки рыжий или черный, а не белый. Так как белый не соответствует стандарту породы
+        (Наследуется в дочернем классе)
+        """
 
     def __str__(self):
         return f"Порода сиба-ину из {self.origin}. Имеют средний размер. " \
@@ -41,7 +63,7 @@ class ShibaInu:
 
     def __repr__(self):
         return f"{self.__class__.__name__}" \
-               f"('Japan'={self.origin!r}, height={self._height!r}, weight={self._weight!r})"
+               f"(origin={self.origin!r}, height={self._height!r}, weight={self._weight!r})"
 
 
 class Chiin(ShibaInu):
@@ -70,6 +92,9 @@ class Chiin(ShibaInu):
 
     @height.setter
     def height(self, height: int) -> None:
+        """
+        Метод проверяет правильность значений
+        """
         if not isinstance(height, int):
             raise TypeError("Рост должен быть типа int")
         if height <= 0:
@@ -78,11 +103,24 @@ class Chiin(ShibaInu):
 
     @weight.setter
     def weight(self, weight: int) -> None:
+        """
+        Метод проверяет правильность значений
+        """
         if not isinstance(weight, int):
             raise TypeError("Вес должен быть типа int")
         if weight <= 0:
             raise ValueError("Вес должен быть положительным числом")
         self._weight = 15
+
+    def standard(self):
+        """
+        Метод проверяет подходит ли собака под стандарт породы. Метод примерный, c разделением на пол собаки
+        """
+        if not (39 <= self.height <= 42):
+            return False
+        if not (10 <= self.weight <= 15):
+            return False
+        return True
 
     def __str__(self):
         return f"Сиба-ину Чиин из {self.origin}. {self.gender}. " \
@@ -90,4 +128,4 @@ class Chiin(ShibaInu):
 
     def __repr__(self):
         return f"{self.__class__.__name__}" \
-               f"('Japan'={self.origin!r}, height={self._height!r}, weight={self._weight!r})"
+               f"(origin={self.origin!r}, height={self._height!r}, weight={self._weight!r})"
