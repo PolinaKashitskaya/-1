@@ -1,80 +1,93 @@
-if __name__ == "__main__":
+class ShibaInu:
+    """
+    Базовый класс описывает породу сиба-ину.
+    :param origin: страна происхождения породы
+    :param height: возможный рост собак
+    :param weight: возможный вес собак
+    """
 
-    # Write your solution here
-    class Dog:
-        """
-        Базовый класс собаки.
-        :param kingdom: царство, к которому относятся собаки
-        :param size: возможный размер собак
-        """
+    def __init__(self, origin: str, height: int, weight: int):
+        self.origin = "Japan"
+        self._height = height
+        self._weight = weight
 
-        def __init__(self, kingdom: str, size: str):
-            self.kingdom = "животные"
-            self.size = "большой, средний, маленький"
+    @property
+    def height(self):
+        return self._height
 
-        @property
-        def kingdom(self):
-            """
-            Геттер должен вернуть kingdom
-            """
-            return self.kingdom
+    @property
+    def weight(self):
+        return self._weight
 
-        def __str__(self):
-            return f"Собаки относятся к царству {self.kingdom}. " \
-                   f"и имеют больший диапазон размеров, чем любые другие млекопитающие. " \
-                   f"Основное деление по размеру: {self.size}"
+    @height.setter
+    def height(self, height: int) -> None:
+        if not isinstance(height, int):
+            raise TypeError("Рост должен быть типа int")
+        if height <= 0:
+            raise ValueError("Рост должен быть положительным числом")
+        self._height = height
 
+    @weight.setter
+    def weight(self, weight: int) -> None:
+        if not isinstance(weight, int):
+            raise TypeError("Вес должен быть типа int")
+        if weight <= 0:
+            raise ValueError("Вес должен быть положительным числом")
+        self._weight = weight
 
-        def __repr__(self):
-            return f"{self.__class__.__name__}" \
-                   f"('животные'={self.kingdom!r}, 'большой, средний, маленький'={self.size!r})"
+    def __str__(self):
+        return f"Порода сиба-ину из {self.origin}. Имеют средний размер. " \
+               f"Например, рост: {self._height}; вес {self._weight}"
 
-
-    class ShibaInu(Dog):
-        """
-        Дочерний класс сиба-ину.
-        :param kingdom: царство, к которому относятся собаки, в том числе и сиба-ину
-        :param size: размер сиба-ину
-        :param color: возможный окрас сиба-ину
-        """
-        def __init__(self, kingdom: str, size: str, color: str):
-            super().__init__(kingdom)
-            self._size = "средний"
-            self.color = "черный, рыжий, зонарный"
-
-        @property
-        def kingdom(self):
-            """
-            Геттер должен вернуть kingdom
-            """
-            return self.kingdom
-
-        def size(self):
-            """
-            Геттер должен вернуть size
-            """
-            return self._size
-
-        def color(self):
-            """
-            Геттер должен вернуть color
-            """
-            return self.color
-
-        def __str__(self):
-            return f"Собаки относятся к царству {self.kingdom}. " \
-                   f"Сиба-ину - порода охотничьих собак. " \
-                   f"Их размер: {self._size}." \
-                   f"Стандарт допускает три основных типа окраса сиба-ину: {self.color}" \
-                   f"Также бывают белые сиба-ину, но они не являются стандартом породы"
-
-        def __repr__(self):
-            return f"{self.__class__.__name__}" \
-                   f"('животные'={self.kingdom!r}, 'средний'={self._size!r}, 'черный, рыжий, зонарный'={self.color!r})"
-
-        @size.setter
-        def size(self, value):
-            self._size = value
+    def __repr__(self):
+        return f"{self.__class__.__name__}" \
+               f"('Japan'={self.origin!r}, height={self._height!r}, weight={self._weight!r})"
 
 
-    pass
+class Chiin(ShibaInu):
+    """
+    Дочерний класс описывает сибу по личке Чиин.
+    :param origin: страна происхождения породы
+    :param height: возможный рост собак
+    :param weight: возможный вес собак
+    :param color: возможный окрас сиба-ину
+    :param gender: пол собаки
+    """
+    def __init__(self, origin: str, height: int, weight: int, color: str, gender: str):
+        super().__init__(origin)
+        self._height = 42
+        self._weight = 15
+        self.color = "рыжий"
+        self.gender = "male"
+
+    @property
+    def height(self):
+        return self._height
+
+    @property
+    def weight(self):
+        return self._weight
+
+    @height.setter
+    def height(self, height: int) -> None:
+        if not isinstance(height, int):
+            raise TypeError("Рост должен быть типа int")
+        if height <= 0:
+            raise ValueError("Рост должен быть положительным числом")
+        self._height = 42
+
+    @weight.setter
+    def weight(self, weight: int) -> None:
+        if not isinstance(weight, int):
+            raise TypeError("Вес должен быть типа int")
+        if weight <= 0:
+            raise ValueError("Вес должен быть положительным числом")
+        self._weight = 15
+
+    def __str__(self):
+        return f"Сиба-ину Чиин из {self.origin}. {self.gender}. " \
+               f"Рост: {self._height}. Вес: {self._weight}. Окрас: {self.gender}"
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}" \
+               f"('Japan'={self.origin!r}, height={self._height!r}, weight={self._weight!r})"
